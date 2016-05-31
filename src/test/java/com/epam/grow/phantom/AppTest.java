@@ -1,6 +1,5 @@
 package com.epam.grow.phantom;
 
-import com.epam.grow.phantom.page.AboutUsPage;
 import com.epam.grow.phantom.steps.AboutUsPageSteps;
 import com.epam.grow.phantom.steps.HomePageSteps;
 import com.epam.grow.phantom.utils.DriverManager;
@@ -29,6 +28,7 @@ public class AppTest {
 
         homePageSteps.openAboutUsTab();
         AboutUsPageSteps aboutUsPageSteps = new AboutUsPageSteps();
+
         Assert.assertTrue(aboutUsPageSteps.isTitleDisplayed());
         Assert.assertTrue("URL not match", "http://demoqa.com/about-us/".equals(driver.getCurrentUrl()));
     }

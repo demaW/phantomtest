@@ -2,10 +2,10 @@ package com.epam.grow.phantom.page;
 
 import org.openqa.selenium.WebDriver;
 
-public abstract class PageObject {
-    protected WebDriver driver;
+abstract class PageObject {
+    WebDriver driver;
 
-    protected PageObject(WebDriver driver) {
+    PageObject(WebDriver driver) {
         this.driver = driver;
     }
 

@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 public class DriverManager {
-    public static final Logger log = Logger.getLogger(DriverManager.class);
+    private static final Logger log = Logger.getLogger(DriverManager.class);
     private static WebDriver instance;
 
     private DriverManager() {
