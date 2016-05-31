@@ -3,6 +3,8 @@ package com.epam.grow.phantom.utils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -15,6 +17,7 @@ class DriverFactory {
 
     private static final String FIREFOX = "firefox";
     private static final String CHROME = "chrome";
+    private static final String PHANTOMJS = "phantomjs";
     private static RemoteWebDriver driver;
 
     static RemoteWebDriver getWebDriverType() {
@@ -25,6 +28,10 @@ class DriverFactory {
             System.setProperty(CHROME_DRIVER_PATH_KEY, PropertyController.getProperty(CHROME_DRIVER_PATH_KEY));
             driver = new ChromeDriver();
             log.info("Chrome driver was initiated");
+        } else if (PropertyController.getProperty(DRIVER_KEY).equalsIgnoreCase(PHANTOMJS) && PropertyController.getProperty(DRIVER_KEY) != null) {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("phantomjs.binary.path", "driver/phantomjs");
+            driver = new PhantomJSDriver(capabilities);
         }
         setImplicitlyWait();
         return driver;
