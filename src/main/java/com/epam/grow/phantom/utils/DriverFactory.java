@@ -18,6 +18,7 @@ class DriverFactory {
     private static final String FIREFOX = "firefox";
     private static final String CHROME = "chrome";
     private static final String PHANTOMJS = "phantomjs";
+    public static final String PHANTOMJS_BINARY_PATH = "phantomjs.binary.path";
     private static RemoteWebDriver driver;
 
     static RemoteWebDriver getWebDriverType() {
@@ -30,7 +31,7 @@ class DriverFactory {
             log.info("Chrome driver was initiated");
         } else if (PropertyController.getProperty(DRIVER_KEY).equalsIgnoreCase(PHANTOMJS) && PropertyController.getProperty(DRIVER_KEY) != null) {
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("phantomjs.binary.path", "driver/phantomjs");
+            capabilities.setCapability(PHANTOMJS_BINARY_PATH, PropertyController.getProperty(PropertyController.PHANTOM_DRIVER_PATH));
             driver = new PhantomJSDriver(capabilities);
         }
         setImplicitlyWait();
